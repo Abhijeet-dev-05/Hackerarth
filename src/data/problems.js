@@ -249,7 +249,7 @@ export const aptitudeProblems = [
 export const problems = [
   {
     id: 1,
-    title: "Finding Window [Adobe]",
+    title: "Finding Window [HackerEarth]",
     difficulty: "Hard",
     type: "Programming",
     score: 100.0,
@@ -276,7 +276,7 @@ If there are multiple such minimum-length windows, return the one with the leftm
   },
   {
     id: 2,
-    title: "Hacker Rocks [Adobe]",
+    title: "Hacker Rocks [HackerEarth]",
     difficulty: "Medium",
     type: "Programming",
     score: 100.0,
