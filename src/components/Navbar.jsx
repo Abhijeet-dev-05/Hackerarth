@@ -1,18 +1,7 @@
-import { useState, useEffect } from 'react'
+import { useTimer } from '../context/TimerContext'
 
 export default function Navbar({ showRunSubmit = false, onRun, onSubmit }) {
-  const [seconds, setSeconds] = useState(7002) // 1:56:42
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setSeconds(s => Math.max(0, s - 1))
-    }, 1000)
-    return () => clearInterval(timer)
-  }, [])
-
-  const h = String(Math.floor(seconds / 3600)).padStart(2, '0')
-  const m = String(Math.floor((seconds % 3600) / 60)).padStart(2, '0')
-  const s = String(seconds % 60).padStart(2, '0')
+  const { formatted, isExpired, isWarning } = useTimer()
 
   return (
     <nav className="flex items-center justify-between px-4 h-[52px] bg-[#1e1e1e] border-b border-[#333] select-none shrink-0 z-50">
@@ -47,9 +36,17 @@ export default function Navbar({ showRunSubmit = false, onRun, onSubmit }) {
       </div>
 
       {/* Center: Timer */}
-      <div className="flex items-center gap-2 bg-[#2a2a2a] border border-[#444] rounded px-4 py-1.5">
-        <span className="font-mono font-semibold text-white text-base tracking-wider">
-          {h}:{m}:{s}
+      <div className={`flex items-center gap-2 border rounded px-4 py-1.5 transition-colors ${
+        isExpired ? 'bg-red-900/50 border-red-700' :
+        isWarning ? 'bg-red-900/30 border-red-600 animate-pulse' :
+        'bg-[#2a2a2a] border-[#444]'
+      }`}>
+        <span className={`font-mono font-semibold text-base tracking-wider ${
+          isExpired ? 'text-red-400' :
+          isWarning ? 'text-red-300' :
+          'text-white'
+        }`}>
+          {formatted}
         </span>
         <svg className="w-4 h-4 text-gray-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
           <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-5.52 0-10-4.48-10-10 0-2.12.66-4.09 1.77-5.71"/>
