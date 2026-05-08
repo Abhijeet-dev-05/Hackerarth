@@ -2,18 +2,12 @@ import { createContext, useContext, useState, useEffect, useRef } from 'react'
 
 const TimerContext = createContext()
 
-// Total test duration: 2 hours (7200 seconds)
-const TOTAL_SECONDS = 7200
+// Total test duration: 1 hour 15 minutes (4500 seconds)
+const TOTAL_SECONDS = 4500
 
 export function TimerProvider({ children }) {
-  // Initialize from localStorage so timer survives full page refresh too
+  // Always reset timer on page refresh
   const [seconds, setSeconds] = useState(() => {
-    const saved = localStorage.getItem('hackerearth_timer_end')
-    if (saved) {
-      const remaining = Math.round((Number(saved) - Date.now()) / 1000)
-      return remaining > 0 ? remaining : 0
-    }
-    // First visit — set the end time
     const endTime = Date.now() + TOTAL_SECONDS * 1000
     localStorage.setItem('hackerearth_timer_end', String(endTime))
     return TOTAL_SECONDS
