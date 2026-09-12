@@ -26,15 +26,15 @@ export default function CodeEditor({ value, onChange, language }) {
   }
 
   return (
-    <div className="flex h-full bg-[#1e1e2e] overflow-hidden">
+    <div className="flex h-full bg-[#0d1117] overflow-hidden">
       {/* Line numbers */}
-      <div className="line-numbers pt-3 pb-3 pl-4 select-none shrink-0 bg-[#1e1e2e] min-w-[40px]">
+      <div className="line-numbers pt-3 pb-3 pl-4 select-none shrink-0 bg-[#0d1117] min-w-[40px]">
         {Array.from({ length: lineCount }, (_, i) => (
           <div key={i + 1}>{i + 1}</div>
         ))}
       </div>
       {/* Divider */}
-      <div className="w-px bg-[#313244] shrink-0" />
+      <div className="w-px bg-[#21262d] shrink-0" />
       {/* Textarea */}
       <textarea
         ref={textareaRef}

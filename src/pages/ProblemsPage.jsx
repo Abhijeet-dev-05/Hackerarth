@@ -1,12 +1,12 @@
-import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import Navbar from '../components/Navbar'
+import Watermark from '../components/Watermark'
 import { problems, aptitudeProblems } from '../data/problems'
 
 const difficultyBadge = {
-  Hard: 'text-red-400 border-red-400/40 bg-red-400/10',
+  Hard:   'text-red-400 border-red-400/40 bg-red-400/10',
   Medium: 'text-yellow-400 border-yellow-400/40 bg-yellow-400/10',
-  Easy: 'text-green-400 border-green-400/40 bg-green-400/10',
+  Easy:   'text-green-400 border-green-400/40 bg-green-400/10',
 }
 
 export default function ProblemsPage() {
@@ -18,7 +18,8 @@ export default function ProblemsPage() {
     problems.reduce((s, p) => s + p.score, 0)
 
   return (
-    <div className="min-h-screen bg-[#1a1a1a] flex flex-col">
+    <div className="min-h-screen bg-[#0d1117] flex flex-col">
+      <Watermark />
       <Navbar />
 
       <div className="max-w-5xl mx-auto w-full px-6 py-8">
@@ -68,11 +69,11 @@ export default function ProblemsPage() {
             {aptitudeProblems.map((problem, idx) => (
               <div
                 key={problem.id}
-                className="flex items-center gap-4 bg-[#111111] border border-[#2a2a3a] rounded-lg px-5 py-3.5 hover:border-[#444] transition-all cursor-pointer"
+                className="flex items-center gap-4 bg-[#161b22] border border-[#21262d] rounded-lg px-5 py-3.5 hover:border-[#30363d] transition-all cursor-pointer"
                 onClick={() => navigate(`/aptitude/${problem.id}`)}
               >
                 {/* Number */}
-                <div className="w-8 h-8 rounded-full border-2 border-[#555] flex items-center justify-center text-xs font-bold text-gray-400 shrink-0">
+                <div className="w-8 h-8 rounded-full border-2 border-[#30363d] flex items-center justify-center text-xs font-bold text-gray-400 shrink-0">
                   {idx + 1}
                 </div>
 
@@ -80,7 +81,7 @@ export default function ProblemsPage() {
                 <div className="flex-1 min-w-0">
                   <div className="text-white text-sm font-medium mb-1">{problem.title}</div>
                   <div className="flex items-center gap-2 flex-wrap">
-                    <span className="text-xs px-2 py-0.5 rounded border border-[#333] text-gray-400 bg-[#252535]">
+                    <span className="text-xs px-2 py-0.5 rounded border border-[#30363d] text-gray-400 bg-[#161b22]">
                       {problem.category}
                     </span>
                     <span className={`text-xs px-2 py-0.5 rounded border ${difficultyBadge[problem.difficulty]}`}>
@@ -96,7 +97,7 @@ export default function ProblemsPage() {
                 </div>
 
                 {/* MCQ badge */}
-                <span className="text-xs px-2.5 py-1 rounded border border-[#333] text-gray-500 shrink-0">
+                <span className="text-xs px-2.5 py-1 rounded border border-[#30363d] text-gray-500 shrink-0">
                   MCQ
                 </span>
 
@@ -125,10 +126,10 @@ export default function ProblemsPage() {
             {problems.map((problem, idx) => (
               <div
                 key={problem.id}
-                className="flex items-center gap-4 bg-[#111111] border border-[#2a2a3a] rounded-lg px-5 py-3.5 hover:border-[#444] transition-all"
+                className="flex items-center gap-4 bg-[#161b22] border border-[#21262d] rounded-lg px-5 py-3.5 hover:border-[#30363d] transition-all"
               >
                 {/* Number */}
-                <div className="w-8 h-8 rounded-full border-2 border-[#555] flex items-center justify-center text-xs font-bold text-gray-400 shrink-0">
+                <div className="w-8 h-8 rounded-full border-2 border-[#30363d] flex items-center justify-center text-xs font-bold text-gray-400 shrink-0">
                   {idx + 1}
                 </div>
 
@@ -139,7 +140,7 @@ export default function ProblemsPage() {
                     <span className={`text-xs px-2 py-0.5 rounded border ${difficultyBadge[problem.difficulty]}`}>
                       {problem.difficulty}
                     </span>
-                    <span className="text-xs px-2 py-0.5 rounded border border-[#333] text-gray-400 bg-[#252535]">
+                    <span className="text-xs px-2 py-0.5 rounded border border-[#30363d] text-gray-400 bg-[#161b22]">
                       {problem.type}
                     </span>
                     <span className="flex items-center gap-1 text-[#7b68ee] text-xs font-medium ml-auto">
@@ -154,7 +155,7 @@ export default function ProblemsPage() {
                 {/* Solve button */}
                 <button
                   onClick={() => navigate(`/problems/${problem.id}`)}
-                  className="px-4 py-1.5 bg-blue-600 hover:bg-blue-700 rounded text-xs text-white font-medium transition-colors shrink-0"
+                  className="px-4 py-1.5 bg-[#1c6ef3] hover:bg-[#1a65dc] rounded text-xs text-white font-medium transition-colors shrink-0"
                 >
                   Solve
                 </button>

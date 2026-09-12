@@ -4,12 +4,12 @@ export default function Navbar({ showRunSubmit = false, onRun, onSubmit }) {
   const { formatted, isExpired, isWarning } = useTimer()
 
   return (
-    <nav className="flex items-center justify-between px-4 h-[52px] bg-[#1e1e1e] border-b border-[#333] select-none shrink-0 z-50">
+    <nav className="flex items-center justify-between px-4 h-[48px] bg-[#161b22] border-b border-[#21262d] select-none shrink-0 z-50">
       {/* Left: Logo + stats */}
       <div className="flex items-center gap-4">
         {/* HackerEarth logo box */}
-        <div className="w-8 h-8 bg-[#2c2c2c] border border-[#444] rounded flex items-center justify-center font-bold text-white text-sm">
-          H
+        <div className="w-8 h-8 bg-[#1c6ef3] rounded flex items-center justify-center font-bold text-white text-sm">
+          h
         </div>
         <div className="flex items-center gap-1.5 text-gray-400 text-sm">
           <svg className="w-4 h-4 text-gray-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -25,8 +25,8 @@ export default function Navbar({ showRunSubmit = false, onRun, onSubmit }) {
           <span className="text-gray-300">300</span>
         </div>
         {/* WiFi icon */}
-        <div className="w-7 h-7 rounded border border-[#444] flex items-center justify-center">
-          <svg className="w-4 h-4 text-[#4ade80]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+        <div className="w-7 h-7 rounded border border-[#30363d] flex items-center justify-center">
+          <svg className="w-4 h-4 text-[#3fb950]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
             <path d="M5 12.55a11 11 0 0 1 14.08 0"/>
             <path d="M1.42 9a16 16 0 0 1 21.16 0"/>
             <path d="M8.53 16.11a6 6 0 0 1 6.95 0"/>
@@ -39,16 +39,16 @@ export default function Navbar({ showRunSubmit = false, onRun, onSubmit }) {
       <div className={`flex items-center gap-2 border rounded px-4 py-1.5 transition-colors ${
         isExpired ? 'bg-red-900/50 border-red-700' :
         isWarning ? 'bg-red-900/30 border-red-600 animate-pulse' :
-        'bg-[#2a2a2a] border-[#444]'
+        'bg-[#0d1117] border-[#30363d]'
       }`}>
-        <span className={`font-mono font-semibold text-base tracking-wider ${
+        <span className={`font-mono font-semibold text-base tracking-widest ${
           isExpired ? 'text-red-400' :
           isWarning ? 'text-red-300' :
           'text-white'
         }`}>
           {formatted}
         </span>
-        <svg className="w-4 h-4 text-gray-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+        <svg className="w-4 h-4 text-gray-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
           <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-5.52 0-10-4.48-10-10 0-2.12.66-4.09 1.77-5.71"/>
           <path d="M21.18 13.73A10 10 0 0 0 12 2a9.96 9.96 0 0 0-4.6 1.12"/>
           <line x1="1" y1="1" x2="23" y2="23"/>
@@ -60,7 +60,7 @@ export default function Navbar({ showRunSubmit = false, onRun, onSubmit }) {
         <div className="flex items-center gap-2">
           <button
             onClick={onRun}
-            className="flex items-center gap-1.5 px-4 py-1.5 border border-[#555] rounded text-sm text-gray-200 hover:bg-[#2a2a2a] transition-colors"
+            className="flex items-center gap-1.5 px-4 py-1.5 border border-[#30363d] rounded text-sm text-gray-200 hover:bg-[#21262d] transition-colors"
           >
             <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor">
               <polygon points="5 3 19 12 5 21 5 3"/>
@@ -69,7 +69,7 @@ export default function Navbar({ showRunSubmit = false, onRun, onSubmit }) {
           </button>
           <button
             onClick={onSubmit}
-            className="flex items-center gap-1.5 px-4 py-1.5 bg-blue-600 hover:bg-blue-700 rounded text-sm text-white transition-colors"
+            className="flex items-center gap-1.5 px-4 py-1.5 bg-[#1c6ef3] hover:bg-[#1a65dc] rounded text-sm text-white transition-colors"
           >
             <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
               <polyline points="20 6 9 17 4 12"/>

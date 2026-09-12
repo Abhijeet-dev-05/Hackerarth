@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import Navbar from '../components/Navbar'
+import Watermark from '../components/Watermark'
 import { aptitudeProblems } from '../data/problems'
 
 const difficultyBadge = {
@@ -57,12 +58,13 @@ export default function AptitudePage() {
   }
 
   return (
-    <div className="min-h-screen bg-[#1a1a1a] flex flex-col">
+    <div className="min-h-screen bg-[#0d1117] flex flex-col">
+      <Watermark />
       <Navbar />
 
       <div className="flex-1 flex flex-col">
         {/* Question header bar */}
-        <div className="bg-[#16161e] border-b border-[#333] px-6 py-3">
+        <div className="bg-[#161b22] border-b border-[#21262d] px-6 py-3">
           <div className="max-w-4xl mx-auto flex items-center justify-between">
             <div className="flex items-center gap-3">
               <button
@@ -92,7 +94,7 @@ export default function AptitudePage() {
                 </svg>
                 {problem.score.toFixed(2)}
               </span>
-              <span className="text-xs px-2.5 py-1 rounded border border-[#333] text-gray-500">
+              <span className="text-xs px-2.5 py-1 rounded border border-[#30363d] text-gray-500">
                 MCQ
               </span>
             </div>
@@ -106,14 +108,14 @@ export default function AptitudePage() {
             <div className="mb-6">
               <h1 className="text-xl font-bold text-white mb-1.5">{problem.title}</h1>
               <div className="flex items-center gap-2">
-                <span className="text-xs px-2 py-0.5 rounded border border-[#333] text-gray-400 bg-[#252535]">
+                <span className="text-xs px-2 py-0.5 rounded border border-[#30363d] text-gray-400 bg-[#161b22]">
                   {problem.category}
                 </span>
               </div>
             </div>
 
             {/* Question text */}
-            <div className="bg-[#111111] border border-[#2a2a3a] rounded-xl p-6 mb-8">
+            <div className="bg-[#161b22] border border-[#21262d] rounded-xl p-6 mb-8">
               <p className="text-gray-200 text-sm leading-relaxed whitespace-pre-line">
                 {problem.question}
               </p>
@@ -124,7 +126,7 @@ export default function AptitudePage() {
               <h3 className="text-gray-400 text-xs uppercase tracking-wider font-semibold mb-3">Choose your answer</h3>
               <div className="space-y-3">
                 {problem.options.map((opt, idx) => {
-                  let cls = 'border-[#333] text-gray-300 hover:border-[#555] hover:bg-[#252535]'
+                  let cls = 'border-[#30363d] text-gray-300 hover:border-[#484f58] hover:bg-[#161b22]'
                   if (isSubmitted) {
                     if (idx === problem.answer) cls = 'border-green-500 bg-green-500/10 text-green-300'
                     else if (idx === selected) cls = 'border-red-500 bg-red-500/10 text-red-300'
@@ -141,9 +143,9 @@ export default function AptitudePage() {
                       className={`w-full flex items-center gap-4 px-5 py-4 rounded-xl border text-sm text-left transition-all ${cls}`}
                     >
                       <span className={`w-8 h-8 rounded-full border-2 flex items-center justify-center text-xs font-bold shrink-0
-                        ${isSubmitted && idx === problem.answer ? 'border-green-500 text-green-400 bg-green-500/10' :
+                          isSubmitted && idx === problem.answer ? 'border-green-500 text-green-400 bg-green-500/10' :
                           isSubmitted && idx === selected ? 'border-red-500 text-red-400 bg-red-500/10' :
-                          selected === idx ? 'border-blue-500 text-blue-400 bg-blue-500/10' : 'border-[#555] text-gray-500'}`}>
+                          selected === idx ? 'border-[#1c6ef3] text-[#58a6ff] bg-[#1c6ef3]/10' : 'border-[#30363d] text-gray-500'}`}>
                         {String.fromCharCode(65 + idx)}
                       </span>
                       <span className="flex-1">{opt}</span>
@@ -195,15 +197,15 @@ export default function AptitudePage() {
         </div>
 
         {/* Bottom navigation bar */}
-        <div className="bg-[#16161e] border-t border-[#333] px-6 py-3.5 shrink-0">
+        <div className="bg-[#161b22] border-t border-[#21262d] px-6 py-3.5 shrink-0">
           <div className="max-w-4xl mx-auto flex items-center justify-between">
             <button
               onClick={goToPrev}
               disabled={currentIndex === 0}
               className={`flex items-center gap-2 px-5 py-2.5 rounded-lg text-sm font-medium transition-all
                 ${currentIndex === 0
-                  ? 'text-gray-600 border border-[#2a2a2a] cursor-not-allowed'
-                  : 'text-gray-300 border border-[#444] hover:border-[#666] hover:bg-[#252535] hover:text-white'}`}
+                  ? 'text-gray-600 border border-[#21262d] cursor-not-allowed'
+                  : 'text-gray-300 border border-[#30363d] hover:border-[#484f58] hover:bg-[#161b22] hover:text-white'}`}
             >
               <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                 <polyline points="15 18 9 12 15 6"/>
@@ -222,7 +224,7 @@ export default function AptitudePage() {
                       ? 'bg-blue-500 scale-125'
                       : submitted[p.id]
                         ? 'bg-green-500/60 hover:bg-green-400'
-                        : 'bg-[#444] hover:bg-[#666]'
+                        : 'bg-[#30363d] hover:bg-[#484f58]'
                   }`}
                   title={`Q${i + 1}`}
                 />
@@ -234,8 +236,8 @@ export default function AptitudePage() {
               disabled={currentIndex === aptitudeProblems.length - 1}
               className={`flex items-center gap-2 px-5 py-2.5 rounded-lg text-sm font-medium transition-all
                 ${currentIndex === aptitudeProblems.length - 1
-                  ? 'text-gray-600 border border-[#2a2a2a] cursor-not-allowed'
-                  : 'text-gray-300 border border-[#444] hover:border-[#666] hover:bg-[#252535] hover:text-white'}`}
+                  ? 'text-gray-600 border border-[#21262d] cursor-not-allowed'
+                  : 'text-gray-300 border border-[#30363d] hover:border-[#484f58] hover:bg-[#161b22] hover:text-white'}`}
             >
               Next
               <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
