@@ -50,8 +50,62 @@ export default function ProblemsPage() {
           Solve as many questions as possible. Aptitude questions are MCQ-based; coding questions require a working solution.
         </p>
 
-        {/* ── Section 1: Aptitude ── */}
+        {/* ── Section 1: Coding ── */}
         <div className="mb-10">
+          <div className="flex items-center gap-3 mb-4">
+            <div className="flex items-center gap-2">
+              <div className="w-1 h-5 bg-blue-500 rounded-full"/>
+              <h2 className="text-white font-semibold text-lg">Coding</h2>
+            </div>
+            <span className="text-xs px-2 py-0.5 rounded-full bg-blue-500/10 border border-blue-500/30 text-blue-400">
+              {problems.length} questions
+            </span>
+          </div>
+
+          <div className="flex flex-col gap-2">
+            {problems.map((problem, idx) => (
+              <div
+                key={problem.id}
+                className="flex items-center gap-4 bg-[#161b22] border border-[#21262d] rounded-lg px-5 py-3.5 hover:border-[#30363d] transition-all"
+              >
+                {/* Number */}
+                <div className="w-8 h-8 rounded-full border-2 border-[#30363d] flex items-center justify-center text-xs font-bold text-gray-400 shrink-0">
+                  {idx + 1}
+                </div>
+
+                {/* Info */}
+                <div className="flex-1 min-w-0">
+                  <div className="text-white text-sm font-medium mb-1">{problem.title}</div>
+                  <div className="flex items-center gap-2 flex-wrap">
+                    <span className={`text-xs px-2 py-0.5 rounded border ${difficultyBadge[problem.difficulty]}`}>
+                      {problem.difficulty}
+                    </span>
+                    <span className="text-xs px-2 py-0.5 rounded border border-[#30363d] text-gray-400 bg-[#161b22]">
+                      {problem.type}
+                    </span>
+                    <span className="flex items-center gap-1 text-[#7b68ee] text-xs font-medium ml-auto">
+                      <svg className="w-3 h-3" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                      </svg>
+                      {problem.score.toFixed(2)}
+                    </span>
+                  </div>
+                </div>
+
+                {/* Solve button */}
+                <button
+                  onClick={() => navigate(`/problems/${problem.id}`)}
+                  className="px-4 py-1.5 bg-[#1c6ef3] hover:bg-[#1a65dc] rounded text-xs text-white font-medium transition-colors shrink-0"
+                >
+                  Solve
+                </button>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* ── Section 2: Aptitude ── */}
+        <div>
           <div className="flex items-center gap-3 mb-4">
             <div className="flex items-center gap-2">
               <div className="w-1 h-5 bg-purple-500 rounded-full"/>
@@ -105,60 +159,6 @@ export default function ProblemsPage() {
                 <svg className="w-4 h-4 text-gray-600 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                   <polyline points="9 18 15 12 9 6"/>
                 </svg>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* ── Section 2: Coding ── */}
-        <div>
-          <div className="flex items-center gap-3 mb-4">
-            <div className="flex items-center gap-2">
-              <div className="w-1 h-5 bg-blue-500 rounded-full"/>
-              <h2 className="text-white font-semibold text-lg">Coding</h2>
-            </div>
-            <span className="text-xs px-2 py-0.5 rounded-full bg-blue-500/10 border border-blue-500/30 text-blue-400">
-              {problems.length} questions
-            </span>
-          </div>
-
-          <div className="flex flex-col gap-2">
-            {problems.map((problem, idx) => (
-              <div
-                key={problem.id}
-                className="flex items-center gap-4 bg-[#161b22] border border-[#21262d] rounded-lg px-5 py-3.5 hover:border-[#30363d] transition-all"
-              >
-                {/* Number */}
-                <div className="w-8 h-8 rounded-full border-2 border-[#30363d] flex items-center justify-center text-xs font-bold text-gray-400 shrink-0">
-                  {idx + 1}
-                </div>
-
-                {/* Info */}
-                <div className="flex-1 min-w-0">
-                  <div className="text-white text-sm font-medium mb-1">{problem.title}</div>
-                  <div className="flex items-center gap-2 flex-wrap">
-                    <span className={`text-xs px-2 py-0.5 rounded border ${difficultyBadge[problem.difficulty]}`}>
-                      {problem.difficulty}
-                    </span>
-                    <span className="text-xs px-2 py-0.5 rounded border border-[#30363d] text-gray-400 bg-[#161b22]">
-                      {problem.type}
-                    </span>
-                    <span className="flex items-center gap-1 text-[#7b68ee] text-xs font-medium ml-auto">
-                      <svg className="w-3 h-3" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-                      </svg>
-                      {problem.score.toFixed(2)}
-                    </span>
-                  </div>
-                </div>
-
-                {/* Solve button */}
-                <button
-                  onClick={() => navigate(`/problems/${problem.id}`)}
-                  className="px-4 py-1.5 bg-[#1c6ef3] hover:bg-[#1a65dc] rounded text-xs text-white font-medium transition-colors shrink-0"
-                >
-                  Solve
-                </button>
               </div>
             ))}
           </div>
